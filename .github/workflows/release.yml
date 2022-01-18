@@ -1,0 +1,22 @@
+name: Release JAR
+on:
+  push:
+    tags: ['*']
+jobs:
+  release-jar:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: adopt
+        java-version: 17
+    - name: Build
+      run: sbt package
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: target/scala-2.13/glints-kafka-connect-transforms*.jar
+        token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,13 @@
+{
+    "build": {
+        "args": {
+            "OPENJDK_TAG": "17.0.1-jdk-bullseye",
+            "SBT_VERSION": "1.6.1"
+        },
+        "dockerfile": "Dockerfile"
+    },
+    "extensions": [
+        "scala-lang.scala",
+        "scalameta.metals"
+    ]
+}
